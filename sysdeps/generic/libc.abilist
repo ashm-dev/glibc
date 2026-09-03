@@ -1,1 +1,3 @@
 GLIBC_2.36 pidfd_getfd F
+GLIBC_2.45 tcgetwinsize F
+GLIBC_2.45 tcsetwinsize F

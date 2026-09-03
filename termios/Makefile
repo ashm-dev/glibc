@@ -25,6 +25,7 @@ include ../Makeconfig
 headers	:= \
   bits/termios-baud.h \
   bits/termios.h \
+  bits/types/struct_winsize.h \
   sys/termios.h \
   sys/ttychars.h \
   sys/ttydefaults.h \
@@ -45,10 +46,20 @@ routines := \
   tcgetattr \
   tcgetpgrp \
   tcgetsid \
+  tcgetwinsize \
   tcsendbrk \
   tcsetattr \
   tcsetpgrp \
+  tcsetwinsize \
   # routines
+
+tests := \
+  tst-tcwinsize \
+  tst-winsize \
+  tst-winsize-ioctl \
+  tst-winsize-posix2024 \
+  tst-winsize-xopen2024 \
+  # tests
 
 include ../Rules
 

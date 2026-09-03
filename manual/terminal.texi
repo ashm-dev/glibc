@@ -24,6 +24,8 @@ descriptor is and how to open a file descriptor for a terminal device.
 * BSD Terminal Modes::          BSD compatible terminal mode setting
 * Line Control::                Sending break sequences, clearing
                                  terminal buffers @dots{}
+* Window Size::                 Querying and setting the size of a
+                                 terminal window.
 * Noncanon Example::            How to read single characters without echo.
 * getpass::                     Prompting the user for a passphrase.
 * Pseudo-Terminals::            How to open a pseudo-terminal.
@@ -2131,6 +2133,78 @@ The @var{filedes} is not associated with a terminal device.
 @vindex EINVAL
 @item EINVAL
 A bad value was supplied as the @var{action} argument.
+@end table
+@end deftypefun
+
+@node Window Size
+@section Window Size
+@cindex terminal window size
+@cindex window size of a terminal
+
+These functions query and change the size of the window associated with a
+terminal device.  They are declared in the header file @file{termios.h}.
+@pindex termios.h
+
+@deftp {Data Type} {struct winsize}
+@standards{POSIX.1-2024, termios.h}
+This structure describes the size of a terminal window.  It contains at
+least the following members:
+
+@table @code
+@item unsigned short int ws_row
+The number of rows, in characters.
+
+@item unsigned short int ws_col
+The number of columns, in characters.
+
+@item unsigned short int ws_xpixel
+The width of the window, in pixels.  Many terminals report this as
+@math{0}.
+
+@item unsigned short int ws_ypixel
+The height of the window, in pixels.  Many terminals report this as
+@math{0}.
+@end table
+@end deftp
+
+@deftypefun int tcgetwinsize (int @var{filedes}, struct winsize *@var{winsize-p})
+@standards{POSIX.1-2024, termios.h}
+@safety{@prelim{}@mtsafe{}@assafe{}@acsafe{}}
+This function stores the current window size of the terminal device with
+file descriptor @var{filedes} in the structure that @var{winsize-p}
+points to.
+
+If successful, @code{tcgetwinsize} returns @math{0}.  A return value of
+@math{-1} indicates an error.  The following @code{errno} error
+conditions are defined for this function:
+
+@table @code
+@item EBADF
+The @var{filedes} argument is not a valid file descriptor.
+
+@item ENOTTY
+The @var{filedes} is not associated with a terminal.
+@end table
+@end deftypefun
+
+@deftypefun int tcsetwinsize (int @var{filedes}, const struct winsize *@var{winsize-p})
+@standards{POSIX.1-2024, termios.h}
+@safety{@prelim{}@mtsafe{}@assafe{}@acsafe{}}
+This function sets the window size of the terminal device with file
+descriptor @var{filedes} from the structure that @var{winsize-p} points
+to.  If the size changes, the foreground process group of the terminal
+is sent a @code{SIGWINCH} signal.  @xref{Miscellaneous Signals}.
+
+If successful, @code{tcsetwinsize} returns @math{0}.  A return value of
+@math{-1} indicates an error.  The following @code{errno} error
+conditions are defined for this function:
+
+@table @code
+@item EBADF
+The @var{filedes} argument is not a valid file descriptor.
+
+@item ENOTTY
+The @var{filedes} is not associated with a terminal.
 @end table
 @end deftypefun
 

@@ -9,11 +9,16 @@ Version 2.45
 
 Major new features:
 
-  [Add new features here]
+* The functions tcgetwinsize and tcsetwinsize from POSIX.1-2024 have been
+  added to query and change the window size of a terminal.  The struct
+  winsize type they operate on is now also defined by <termios.h>.
 
 Deprecated and removed features, and other changes affecting compatibility:
 
-  [Add deprecations, removals and changes affecting compatibility here]
+* <termios.h> now defines struct winsize and declares tcgetwinsize and
+  tcsetwinsize when _DEFAULT_SOURCE or _GNU_SOURCE is in effect, as the
+  BSDs and musl do.  Programs which include <termios.h> without
+  <sys/ioctl.h> and define their own struct winsize need to be adjusted.
 
 Changes to build and runtime requirements:
 

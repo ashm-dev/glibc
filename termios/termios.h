@@ -38,6 +38,11 @@ __BEGIN_DECLS
    `cc_t', `speed_t', and all the macros specifying the flag bits.  */
 #include <bits/termios.h>
 
+#if defined __USE_MISC || defined __USE_XOPEN2K24
+/* Get the definition of `struct winsize'.  */
+# include <bits/types/struct_winsize.h>
+#endif
+
 #ifdef __USE_MISC
 /* Compare a character C to a value VAL from the `c_cc' array in a
    `struct termios'.  If VAL is _POSIX_VDISABLE, no character can match it.  */
@@ -117,6 +122,14 @@ extern int tcflow (int __fd, int __action) __THROW;
 #if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 /* Get process group ID for session leader for controlling terminal FD.  */
 extern __pid_t tcgetsid (int __fd) __THROW;
+#endif
+
+#if defined __USE_MISC || defined __USE_XOPEN2K24
+/* Store the window size of the terminal FD in *WINP.  */
+extern int tcgetwinsize (int __fd, struct winsize *__winp) __THROW;
+
+/* Set the window size of the terminal FD from *WINP.  */
+extern int tcsetwinsize (int __fd, const struct winsize *__winp) __THROW;
 #endif
 
 

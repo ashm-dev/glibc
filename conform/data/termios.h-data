@@ -9,6 +9,13 @@ type {struct termios}
 type pid_t
 #endif
 
+#if defined XOPEN2K24 || defined POSIX2024
+type {struct winsize}
+
+element {struct winsize} {unsigned short int} ws_row
+element {struct winsize} {unsigned short int} ws_col
+#endif
+
 element {struct termios} tcflag_t c_iflag
 element {struct termios} tcflag_t c_oflag
 element {struct termios} tcflag_t c_cflag
@@ -146,6 +153,10 @@ function int tcflush (int, int)
 function int tcgetattr (int, struct termios*)
 #if !defined POSIX && !defined XPG4
 function pid_t tcgetsid (int)
+#endif
+#if defined XOPEN2K24 || defined POSIX2024
+function int tcgetwinsize (int, struct winsize*)
+function int tcsetwinsize (int, const struct winsize*)
 #endif
 function int tcsendbreak (int, int)
 function int tcsetattr (int, int, const struct termios*)
