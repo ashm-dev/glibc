@@ -1,0 +1,50 @@
+Commit 5365acc567 ("libio: Convert __obstack_vprintf_internal to
+buffers (bug 27124)") moved obstack formatting to printf_buffer.  The
+flush callback only requests room for the pending character, so a
+large ready-to-copy write can repeatedly grow and copy the object.
+
+When a byte-oriented obstack buffer is full, reserve space for the
+remaining write and any pending character at once.  Lengths below
+INT_MAX use this path; larger writes retain the existing path.  The
+static reference is weak so ordinary static printf users do not pull
+in obstack code.  Wide-character output and obstack growth policy are
+unchanged.
+
+The new shared and static tests cover printf/vprintf, buffer boundaries,
+%n, embedded NUL, append operations, conversion failure, and custom
+printf handlers.  For a 1 MiB string starting with a 128-byte obstack
+chunk, the allocation count falls from 61 to 2, including the initial
+chunk.  Add bench-obprintf for fresh and preallocated obstacks.
+
+Measurements on x86_64 with GCC 16.2.1, identical build configuration,
+the same benchmark executable and loader, and alternating baseline /
+patched libc runs pinned to one CPU (medians of nine runs each):
+
+                              baseline       patched
+  fresh obstack, 64 KiB        202684         11093.7
+  fresh obstack, 1 MiB         4570660        278504
+  preallocated, 4 KiB          230.206        240.257
+  preallocated, 1 MiB          131870         136137
+
+These are hp_timing units, not nanoseconds.  The fresh-obstack cases
+improve by 18.27x and 16.41x, while the preallocated cases are 4.37% and
+3.24% slower.  An earlier seven-pair run showed the same direction,
+including a 6.35% slowdown for preallocated 4 KiB output.  The machine
+was not isolated from other activity; the preallocated regressions
+remain unexplained.  This is not a claim of a general printf speedup.
+
+The following tests passed on x86_64-linux-gnu:
+  stdio-common/tst-obprintf
+  stdio-common/tst-obprintf-large
+  stdio-common/tst-obprintf-large-static
+  libio/tst-stdio-static
+  debug/tst-fortify-c-default-2-def
+
+With the implementation change removed, the new test reports 18
+allocation-count failures; content and length checks still pass.
+A clean full-suite result is not available.  The limited stdio-common
+run recorded 398 PASS and one tst-setvbuf2 failure before timing out;
+that failure also reproduced without the patch.  A subsequent xcheck
+run had three failures involving installation or privileges.  Other
+ordinary-suite failures in that build have not been classified against
+a matching baseline.  Other architectures have not been tested.
