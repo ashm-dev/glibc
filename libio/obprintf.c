@@ -34,6 +34,30 @@ struct __printf_buffer_obstack
 };
 
 void
+__printf_buffer_write_obstack (struct __printf_buffer *base,
+                              const char *s, size_t count)
+{
+  struct __printf_buffer_obstack *buf
+    = (struct __printf_buffer_obstack *) base;
+
+  assert (base->write_ptr == base->write_end);
+  base->written += base->write_ptr - base->write_base;
+  bool pending = base->write_ptr == &buf->ch + 1;
+
+  /* Reserve the whole write, not just the next character.  */
+  obstack_make_room (buf->obstack, count + pending);
+  if (pending)
+    obstack_1grow_fast (buf->obstack, buf->ch);
+  obstack_grow (buf->obstack, s, count);
+  base->written += count;
+  base->write_base = obstack_next_free (buf->obstack);
+  base->write_ptr = base->write_base;
+  size_t room = obstack_room (buf->obstack);
+  base->write_end = base->write_ptr + room;
+  obstack_blank_fast (buf->obstack, room);
+}
+
+void
 __printf_buffer_flush_obstack (struct __printf_buffer_obstack *buf)
 {
   /* About to switch buffers, so record the bytes written so far.  */

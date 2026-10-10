@@ -309,6 +309,8 @@ tests := \
   tst-long-dbl-fphex \
   tst-memstream-string \
   tst-obprintf \
+  tst-obprintf-large \
+  tst-obprintf-large-static \
   tst-perror \
   tst-popen \
   tst-popen2 \
@@ -382,6 +384,10 @@ tests += \
 endif
 endif
 endif
+
+tests-static += \
+  tst-obprintf-large-static \
+  # tests-static
 
 tests-container += \
   tst-popen3 \

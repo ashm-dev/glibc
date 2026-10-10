@@ -336,6 +336,10 @@ void __printf_buffer_flush_fphex_to_wide (struct
 struct __printf_buffer_obstack;
 void __printf_buffer_flush_obstack (struct __printf_buffer_obstack *)
   attribute_hidden;
+/* Write to a full obstack buffer.  The length must be less than INT_MAX
+   to leave room for a pending character in the obstack growth request.  */
+void __printf_buffer_write_obstack (struct __printf_buffer *, const char *,
+                                    size_t) attribute_hidden;
 
 struct __wprintf_buffer_to_file;
 void __wprintf_buffer_flush_to_file (struct __wprintf_buffer_to_file *)

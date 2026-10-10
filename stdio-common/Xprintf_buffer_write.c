@@ -19,6 +19,7 @@
 #include <printf_buffer.h>
 
 #include <assert.h>
+#include <limits.h>
 #include <string.h>
 
 void
@@ -30,8 +31,19 @@ Xprintf_buffer_write (struct Xprintf_buffer *buf,
 
   while (count > 0)
     {
-      if (buf->write_ptr == buf->write_end && !Xprintf_buffer_flush (buf))
-        return;
+      if (buf->write_ptr == buf->write_end)
+        {
+#ifdef PRINTF_BUFFER_WRITE_OBSTACK
+          /* obstack growth takes an int, including any pending character.  */
+          if (buf->mode == __printf_buffer_mode_obstack && count < INT_MAX)
+            {
+              __printf_buffer_write_obstack (buf, s, count);
+              return;
+            }
+#endif
+          if (!Xprintf_buffer_flush (buf))
+            return;
+        }
       assert (buf->write_ptr != buf->write_end);
       size_t to_copy = buf->write_end - buf->write_ptr;
       if (to_copy > count)

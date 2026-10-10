@@ -328,7 +328,10 @@ stdio-benchset := \
   fclose \
   # stdio-benchset
 
-stdio-common-benchset := sprintf
+stdio-common-benchset := \
+  obprintf \
+  sprintf \
+  # stdio-common-benchset
 
 math-benchset := math-inlines
 

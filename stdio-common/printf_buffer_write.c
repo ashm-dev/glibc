@@ -17,5 +17,11 @@
    <https://www.gnu.org/licenses/>.  */
 
 #include <printf_buffer.h>
+
+#ifndef SHARED
+# pragma weak __printf_buffer_write_obstack
+#endif
+
+#define PRINTF_BUFFER_WRITE_OBSTACK 1
 #include "printf_buffer-char.h"
 #include "Xprintf_buffer_write.c"
