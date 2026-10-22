@@ -26,10 +26,10 @@ const struct __locale_data _nl_C_LC_PAPER attribute_hidden =
 {
   _nl_C_name,
   NULL, 0, 0,			/* no file mapped */
-  3,
-  NULL,				/* No cached data.  */
   UNDELETABLE,
+  NULL,				/* No cached data.  */
   0,
+  3,
   {
     { .word = 297 },
     { .word = 210 },

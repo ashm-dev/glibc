@@ -26,10 +26,10 @@ const struct __locale_data _nl_C_LC_IDENTIFICATION attribute_hidden =
 {
   _nl_C_name,
   NULL, 0, 0,			/* no file mapped */
-  16,
-  NULL,				/* No cached data.  */
   UNDELETABLE,
+  NULL,				/* No cached data.  */
   0,
+  16,
   {
     { .string = "ISO/IEC 14652 i18n FDCC-set" },
     { .string = "ISO/IEC JTC1/SC22/WG20 - internationalization" },

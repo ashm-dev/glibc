@@ -58,7 +58,7 @@ struct __locale_data
     ld_archive			/* Both point into mmap'd archive regions.  */
   } alloc;
 
-  unsigned int nstrings;	/* Number of strings below.  */
+  unsigned int usage_count;	/* Counter for users.  */
 
   /* This provides a slot for category-specific code to cache data
      computed about this locale.  Type of the data pointed to:
@@ -69,11 +69,10 @@ struct __locale_data
      This data deallocated at the start of _nl_unload_locale.  */
   void *private;
 
-  unsigned int usage_count;	/* Counter for users.  */
-
   int use_translit;		/* Nonzero if the mb*towv*() and wc*tomb()
 				   functions should use transliteration.  */
 
+  unsigned int nstrings;	/* Number of strings below.  */
   union locale_data_value
   {
     const uint32_t *wstr;
