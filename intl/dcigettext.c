@@ -225,13 +225,13 @@ struct known_translation_t
   /* The category.  */
   int category;
 
+  /* State of the catalog counter at the point the string was found.  */
+  int counter;
+
 #ifdef HAVE_PER_THREAD_LOCALE
   /* Name of the relevant locale category, or "" for the global locale.  */
   const char *localename;
 #endif
-
-  /* State of the catalog counter at the point the string was found.  */
-  int counter;
 
   /* Catalog where the string was found.  */
   struct loaded_l10nfile *domain;
