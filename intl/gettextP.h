@@ -150,22 +150,22 @@ struct loaded_domain
   const char *data;
   /* 1 if the memory is mmap()ed, 0 if the memory is malloc()ed.  */
   int use_mmap;
-  /* Size of mmap()ed memory.  */
-  size_t mmap_size;
   /* 1 if the .mo file uses a different endianness than this machine.  */
   int must_swap;
+  /* Size of mmap()ed memory.  */
+  size_t mmap_size;
   /* Pointer to additional malloc()ed memory.  */
   void *malloced;
 
   /* Number of static strings pairs.  */
   nls_uint32 nstrings;
+  /* Number of system dependent strings pairs.  */
+  nls_uint32 n_sysdep_strings;
   /* Pointer to descriptors of original strings in the file.  */
   const struct string_desc *orig_tab;
   /* Pointer to descriptors of translated strings in the file.  */
   const struct string_desc *trans_tab;
 
-  /* Number of system dependent strings pairs.  */
-  nls_uint32 n_sysdep_strings;
   /* Pointer to descriptors of original sysdep strings.  */
   const struct sysdep_string_desc *orig_sysdep_tab;
   /* Pointer to descriptors of translated sysdep strings.  */
@@ -173,10 +173,10 @@ struct loaded_domain
 
   /* Size of hash table.  */
   nls_uint32 hash_size;
-  /* Pointer to hash table.  */
-  const nls_uint32 *hash_tab;
   /* 1 if the hash table uses a different endianness than this machine.  */
   int must_swap_hash_tab;
+  /* Pointer to hash table.  */
+  const nls_uint32 *hash_tab;
 
   /* Cache of charset conversions of the translated strings.  */
   struct converted_domain *conversions;
