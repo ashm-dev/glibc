@@ -222,16 +222,16 @@ struct known_translation_t
   /* Domain in which to search.  */
   const char *domainname;
 
+#ifdef HAVE_PER_THREAD_LOCALE
+  /* Name of the relevant locale category, or "" for the global locale.  */
+  const char *localename;
+#endif
+
   /* The category.  */
   int category;
 
   /* State of the catalog counter at the point the string was found.  */
   int counter;
-
-#ifdef HAVE_PER_THREAD_LOCALE
-  /* Name of the relevant locale category, or "" for the global locale.  */
-  const char *localename;
-#endif
 
   /* Catalog where the string was found.  */
   struct loaded_l10nfile *domain;
@@ -240,7 +240,8 @@ struct known_translation_t
   const char *translation;
   size_t translation_length;
 
-  /* Pointer to the string in question.  */
+  /* The string in question, which must be last because cache entries store
+     variable-length strings starting at msgid.appended.  */
   union
     {
       char appended[ZERO];  /* used if domain != NULL */
