@@ -26,10 +26,10 @@ const struct __locale_data _nl_C_LC_MEASUREMENT attribute_hidden =
 {
   _nl_C_name,
   NULL, 0, 0,			/* no file mapped */
+  2,
   NULL,				/* No cached data.  */
   UNDELETABLE,
   0,
-  2,
   {
     { .string = "\1" },
     { .string = _nl_C_codeset }

@@ -26,10 +26,10 @@ const struct __locale_data _nl_C_LC_TIME attribute_hidden =
 {
   _nl_C_name,
   NULL, 0, 0,			/* no file mapped */
+  159,
   NULL, 			/* No cached data.  */
   UNDELETABLE,
   0,
-  159,
   {
     { .string = "Sun" },
     { .string = "Mon" },

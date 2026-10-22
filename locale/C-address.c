@@ -26,10 +26,10 @@ const struct __locale_data _nl_C_LC_ADDRESS attribute_hidden =
 {
   _nl_C_name,
   NULL, 0, 0,			/* no file mapped */
+  13,
   NULL,				/* No cached data.  */
   UNDELETABLE,
   0,
-  13,
   {
     { .string = "%a%N%f%N%d%N%b%N%s %h %e %r%N%C-%z %T%N%c%N" },
     { .string = "" },
