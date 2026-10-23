@@ -318,6 +318,7 @@ tests := \
   test-rpcent \
   testgrp \
   tst-default-domain \
+  tst-fgetent-seek \
   tst-fgetsgent_r \
   tst-getaddrinfo \
   tst-getaddrinfo2 \
