@@ -20,6 +20,7 @@
 #include <errno.h>
 #include <grp.h>
 #include <gshadow.h>
+#include <mcheck.h>
 #include <pwd.h>
 #include <shadow.h>
 #include <stdbool.h>
@@ -56,6 +57,8 @@ seek_input (void *closure, off64_t *offset, int whence)
   struct input_file *file = closure;
   if (whence == SEEK_CUR)
     {
+      /* A zero-offset SEEK_CUR only queries the position and must succeed
+         even when actual seeks are set to fail.  */
       TEST_COMPARE (*offset, 0);
       *offset = file->offset;
       return 0;
@@ -64,10 +67,15 @@ seek_input (void *closure, off64_t *offset, int whence)
   TEST_VERIFY_EXIT (whence == SEEK_SET);
   TEST_VERIFY_EXIT (*offset >= 0 && *offset <= (off64_t) file->length);
 
-  /* A second rewind after the _r function has already restored the
-     position used to fail here and lose the reallocated buffer.  */
+  /* With fail_seek set, the _r function cannot rewind and fget*ent returns
+     NULL with errno set to ESPIPE.  Otherwise, reject a second rewind after
+     the _r function has restored the position: the unchanged offset
+     identifies the redundant seek that used to lose the reallocated buffer
+     in the non-_r wrappers.  */
   if (file->fail_seek || *offset == file->offset)
     {
+      /* Inject an I/O error, not a test failure; check_growing checks the
+         resulting error or successful read.  */
       errno = EIO;
       return -1;
     }
@@ -170,6 +178,8 @@ check_growing (size_t test, size_t length, bool fail_seek)
 
   if (fail_seek)
     {
+      /* A required rewind fails here: expect NULL, ESPIPE and a stream
+         error, then verify below that reading works after recovery.  */
       errno = 0;
       TEST_VERIFY (tests[test].read (fp) == NULL);
       TEST_COMPARE (errno, ESPIPE);
@@ -182,6 +192,8 @@ check_growing (size_t test, size_t length, bool fail_seek)
       TEST_COMPARE (fseeko (fp, 0, SEEK_SET), 0);
     }
 
+  /* Reading must not attempt a redundant rewind, which seek_input
+     rejects even after fail_seek has been cleared.  */
   TEST_COMPARE_STRING (tests[test].read (fp), password);
   TEST_COMPARE_STRING (tests[test].read (fp), "x");
   errno = 0;
@@ -217,10 +229,15 @@ check_nonseekable (size_t test)
 static int
 do_test (void)
 {
+  mtrace ();
+
   for (size_t i = 0; i < array_length (tests); ++i)
     {
       printf ("info: testing %s\n", tests[i].name);
+      /* Exceed the initial 1024-byte buffers to force repeated growth.  */
       check_growing (i, 8192, false);
+      /* The static buffers survive the first call; exceed their grown sizes
+         so that the seek failure is reached and recovery needs growth.  */
       check_growing (i, 16384, true);
       check_nonseekable (i);
     }
