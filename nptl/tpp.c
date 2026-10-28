@@ -22,7 +22,6 @@
 #include <pthreadP.h>
 #include <sched.h>
 #include <stdlib.h>
-#include <atomic.h>
 
 int __sched_fifo_min_prio = -1;
 libc_hidden_data_def (__sched_fifo_min_prio)

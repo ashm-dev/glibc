@@ -16,16 +16,13 @@
    <https://www.gnu.org/licenses/>.  */
 
 #include <assert.h>
-#include <ctype.h>
 #include <string.h>
 #include "wcsmbsload.h"
 #include <dlfcn.h>
 #include <errno.h>
 #include <gconv.h>
 #include <stdlib.h>
-#include <string.h>
 #include <wchar.h>
-#include <wcsmbsload.h>
 
 #include <pointer_guard.h>
 

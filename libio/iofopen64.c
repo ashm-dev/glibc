@@ -26,7 +26,6 @@
 
 #include "libioP.h"
 #include <fcntl.h>
-#include <stdlib.h>
 
 /* iofopen.c defines _IO_fopen64/fopen64 as aliases if O_LARGEFILE==0.  */
 #if defined O_LARGEFILE && O_LARGEFILE != 0

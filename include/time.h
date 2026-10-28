@@ -10,7 +10,6 @@
 # include <time/mktime-internal.h>
 # include <sys/time.h>
 # include <time-clockid.h>
-# include <sys/time.h>
 # include <stdint.h>
 # include <verify.h>
 

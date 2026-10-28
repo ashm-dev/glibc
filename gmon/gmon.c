@@ -38,11 +38,9 @@
 #include <unistd.h>
 #include <wchar.h>
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
-#include <unistd.h>
 #include <libc-internal.h>
 #include <not-cancel.h>
 

@@ -27,7 +27,6 @@
 #include <support/xstdlib.h>
 #include <support/xunistd.h>
 #include <support/check.h>
-#include <string.h>
 #include <errno.h>
 
 /* Ensure that we use the PTRACE_SINGLEBLOCK definition from glibc ptrace.h

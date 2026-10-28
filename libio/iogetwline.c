@@ -25,7 +25,6 @@
    in files containing the exception.  */
 
 #include "libioP.h"
-#include <string.h>
 #include <wchar.h>
 
 size_t

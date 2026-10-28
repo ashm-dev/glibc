@@ -42,7 +42,6 @@ static char sccsid[] = "@(#)mcount.c	8.1 (Berkeley) 6/4/93";
 #include <atomic.h>
 
 #include <not-cancel.h>
-#include <unistd.h>
 #define ERR(s) __write_nocancel (STDERR_FILENO, s, sizeof (s) - 1)
 
 /*

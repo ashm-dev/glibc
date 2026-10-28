@@ -18,7 +18,6 @@
 #include <unistd.h>
 #include <sys/param.h>
 #ifdef HAVE_INLINED_SYSCALLS
-# include <errno.h>
 # include <sysdep.h>
 #endif
 

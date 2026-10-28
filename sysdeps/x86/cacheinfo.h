@@ -22,7 +22,6 @@
 #include <cpu-features.h>
 
 #define TUNABLE_NAMESPACE cpu
-#include <unistd.h>		/* Get STDOUT_FILENO for _dl_printf.  */
 #include <elf/dl-tunables.h>
 
 #if IS_IN (libc)

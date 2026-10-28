@@ -50,7 +50,6 @@ struct long_array
 
 #include <malloc.h>
 #include <mcheck.h>
-#include <stdint.h>
 #include <support/check.h>
 #include <support/support.h>
 

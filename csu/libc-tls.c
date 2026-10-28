@@ -28,7 +28,6 @@
 #include <pthreadP.h>
 #include <dl-call_tls_init_tp.h>
 #include <dl-extra_tls.h>
-#include <array_length.h>
 #include <elf/dl-tls_block_align.h>
 #include <dl-symbol-redir-ifunc.h>
 

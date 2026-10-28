@@ -15,7 +15,6 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
-#include <errno.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <stdint.h>

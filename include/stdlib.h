@@ -274,7 +274,6 @@ libc_hidden_proto (____strtoll_l_internal)
 libc_hidden_proto (____strtoul_l_internal)
 libc_hidden_proto (____strtoull_l_internal)
 
-#include <bits/floatn.h>
 libc_hidden_proto (strtof)
 libc_hidden_proto (strtod)
 #if __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 0
@@ -300,9 +299,6 @@ libc_hidden_proto (__strtold_nan)
 libc_hidden_proto (__wcstof_nan)
 libc_hidden_proto (__wcstod_nan)
 libc_hidden_proto (__wcstold_nan)
-
-/* Enable _FloatN bits as needed.  */
-#include <bits/floatn.h>
 
 #if __HAVE_DISTINCT_FLOAT128
 extern __typeof (strtof128_l) __strtof128_l;

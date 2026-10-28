@@ -23,7 +23,6 @@
 #include <string.h>
 
 #include <pt-internal.h>
-#include <string.h>
 #include <shlib-compat.h>
 #include <ldsodefs.h>
 

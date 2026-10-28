@@ -22,7 +22,6 @@
 
 #include <time.h>
 #include <sys/time.h>
-#include <time.h>
 #include <errno.h>
 
 /* Set the current time of day and timezone information.

@@ -188,7 +188,6 @@ weak_alias (__euidaccess, eaccess)
 
 #ifdef TEST
 # include <stdio.h>
-# include <errno.h>
 # include "error.h"
 
 char *program_name;

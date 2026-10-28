@@ -35,7 +35,6 @@
 # include <thread_pointer.h>
 # include <tls.h>
 # include <dl-tls.h>
-# include <sys/auxv.h>
 # include "tst-rseq.h"
 
 /* Used to check if the address of the rseq area comes before or after the tls

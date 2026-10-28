@@ -21,7 +21,6 @@
 #include <string.h>
 #include <wchar.h>
 #include <sys/param.h>
-#include <printf.h>
 
 #include "../locale/localeinfo.h"
 

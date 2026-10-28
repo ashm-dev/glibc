@@ -20,7 +20,6 @@
 #include <unistd.h>
 #include <sysdep.h>
 #include <signal.h>
-#include <errno.h>
 #include <shlib-compat.h>
 #include "exit.h"
 

@@ -22,7 +22,6 @@
 #if __TIMESIZE != 64
 # include <glob.h>
 # include <dirent.h>
-# include <sys/stat.h>
 
 # define glob_t glob64_time64_t
 # define globfree(pglob) __globfree64_time64 (pglob)

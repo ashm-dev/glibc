@@ -28,7 +28,6 @@
 #include "strfile.h"
 #include "libioP.h"
 #include <string.h>
-#include <stdio_ext.h>
 
 void
 _IO_str_init_static_internal (_IO_strfile *sf, char *ptr, size_t size,

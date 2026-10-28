@@ -19,13 +19,11 @@
 #include <errno.h>
 #include <grp.h>
 #include <nss.h>
-#include <stdio_ext.h>
 #include <string.h>
 #include <sys/param.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <scratch_buffer.h>
-#include <nss.h>
 #include <nss_files.h>
 
 enum nss_status

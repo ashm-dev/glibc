@@ -29,7 +29,6 @@
 #define __ftello64 __ftello64_disable
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <libioP.h>
 #include <errno.h>
 

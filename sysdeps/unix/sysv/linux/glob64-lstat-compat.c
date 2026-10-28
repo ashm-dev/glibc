@@ -23,7 +23,6 @@
 #if !XSTAT_IS_XSTAT64
 # include <glob.h>
 # include <dirent.h>
-# include <sys/stat.h>
 # include <shlib-compat.h>
 
 # define dirent dirent64

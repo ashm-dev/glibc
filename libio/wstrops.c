@@ -27,9 +27,7 @@
 #include <assert.h>
 #include "strfile.h"
 #include "libioP.h"
-#include <string.h>
 #include <wchar.h>
-#include <stdio_ext.h>
 
 void
 _IO_wstr_init_static (FILE *fp, wchar_t *ptr, size_t size,

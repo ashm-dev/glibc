@@ -16,7 +16,6 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <https://www.gnu.org/licenses/>.  */
 
-#include <errno.h>
 #include <pthreadP.h>
 
 pid_t

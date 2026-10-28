@@ -19,7 +19,6 @@
 #include <sysdep.h>
 #include <libc-symbols.h>
 
-#include <sysdep.h>
 #include <sys/syscall.h>
 
 /* resolver has atypical calling ABI (r11 and r12)

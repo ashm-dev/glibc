@@ -21,7 +21,6 @@
 #if __TIMESIZE != 64
 # include <glob.h>
 # include <dirent.h>
-# include <sys/stat.h>
 
 # define dirent dirent64
 # define __readdir(dirp) __readdir64 (dirp)

@@ -18,7 +18,6 @@
 #include <errno.h>
 #include <sched.h>
 #include <string.h>
-#include <sched.h>
 #include "pthreadP.h"
 #include <lowlevellock.h>
 #include <shlib-compat.h>

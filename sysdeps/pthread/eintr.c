@@ -20,7 +20,6 @@
 #include <unistd.h>
 #include <support/xthread.h>
 #include <support/xsignal.h>
-#include <support/xthread.h>
 
 
 static int the_sig;

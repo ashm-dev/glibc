@@ -29,7 +29,6 @@
 #include <support/namespace.h>
 #include <support/support.h>
 #include <support/test-driver.h>
-#include <support/test-driver.h>
 #include <support/xmemstream.h>
 #include <support/xstdio.h>
 #include <support/xunistd.h>

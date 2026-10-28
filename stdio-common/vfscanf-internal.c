@@ -64,7 +64,6 @@
 #define POSIX_MALLOC	0x2000	/* m: malloc strings */
 #define MALLOC		(GNU_MALLOC | POSIX_MALLOC)
 
-#include <locale/localeinfo.h>
 #include <libioP.h>
 
 #ifdef COMPILE_WSCANF

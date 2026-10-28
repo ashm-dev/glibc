@@ -35,7 +35,6 @@ init_pids (void)
 SET_RELHOOK (_hurd_proc_subinit, init_pids);
 
 #include <hurd/msg_server.h>
-#include "set-hooks.h"
 
 DEFINE_HOOK (_hurd_pgrp_changed_hook, (pid_t));
 

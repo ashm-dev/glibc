@@ -25,7 +25,6 @@
    in files containing the exception.  */
 
 #include "libioP.h"
-#include <stdlib.h>
 #include <errno.h>
 /* ANSI explicily requires setting errno to a positive value on failure. */
 

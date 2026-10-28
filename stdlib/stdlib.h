@@ -1206,7 +1206,6 @@ extern size_t memalignment (const void *__p);
 # include <bits/stdlib.h>
 #endif
 
-#include <bits/floatn.h>
 #if defined __LDBL_COMPAT || __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI == 1
 # include <bits/stdlib-ldbl.h>
 #endif

@@ -210,7 +210,6 @@
 #include <ldsodefs.h>
 #include <setvmaname.h>
 
-#include <unistd.h>
 #include <stdio.h>    /* needed for malloc_stats */
 #include <errno.h>
 #include <assert.h>

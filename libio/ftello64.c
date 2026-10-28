@@ -25,7 +25,6 @@
    in files containing the exception.  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <libioP.h>
 #include <errno.h>
 

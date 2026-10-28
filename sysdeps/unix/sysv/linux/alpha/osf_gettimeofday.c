@@ -22,7 +22,6 @@
 
 #include <time.h>
 #include <string.h>
-#include <time.h>
 #include <sys/time.h>
 
 /* Get the current time of day and timezone information putting it

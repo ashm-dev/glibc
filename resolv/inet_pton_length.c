@@ -34,7 +34,6 @@
 
 #include <arpa/inet.h>
 #include <arpa/nameser.h>
-#include <ctype.h>
 #include <errno.h>
 #include <netinet/in.h>
 #include <resolv/resolv-internal.h>

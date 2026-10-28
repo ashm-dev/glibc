@@ -24,7 +24,6 @@
    This exception applies to code released by its copyright holders
    in files containing the exception.  */
 
-#include <errno.h>
 #include "libioP.h"
 #include "stdio.h"
 

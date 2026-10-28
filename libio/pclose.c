@@ -26,7 +26,6 @@
 
 #include "libioP.h"
 #include "stdio.h"
-#include <errno.h>
 #include <shlib-compat.h>
 
 /* POSIX does not require us to check that a stream passed to pclose()

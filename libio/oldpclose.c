@@ -30,7 +30,6 @@
 #define _IO_USE_OLD_IO_FILE
 #include "libioP.h"
 #include "stdio.h"
-#include <errno.h>
 
 /* POSIX does not require us to check that a stream passed to pclose()
    was created by popen().  Instead we rely on _IO_SYSCLOSE to call

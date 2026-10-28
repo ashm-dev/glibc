@@ -11,7 +11,6 @@
 # include <wcsmbs/wchar.h>
 # ifndef _ISOMAC
 
-#include <bits/floatn.h>
 #include <bits/wchar2-decl.h>
 #include <stdbool.h>
 

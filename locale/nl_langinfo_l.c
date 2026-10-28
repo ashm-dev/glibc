@@ -18,7 +18,6 @@
 
 #include <langinfo.h>
 #include <locale.h>
-#include <errno.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include "localeinfo.h"

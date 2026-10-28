@@ -38,7 +38,6 @@
 #undef fgetpos64
 
 #include <errno.h>
-#include <stdlib.h>
 #include <shlib-compat.h>
 
 int

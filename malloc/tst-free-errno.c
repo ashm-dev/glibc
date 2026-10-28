@@ -22,7 +22,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdint.h>
-#include <string.h>
 #include <stdio.h>
 #include <sys/mman.h>
 #include <support/check.h>

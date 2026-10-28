@@ -15,14 +15,11 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
-#include <ctype.h>
 #include <dlfcn.h>
-#include <errno.h>
 #include <netdb.h>
 #include <libc-lock.h>
 #include <search.h>
 #include <stdio.h>
-#include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 
